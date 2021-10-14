@@ -16,7 +16,7 @@ const breakpoints = createBreakpoints({
 
 const global = {
   body: {
-    background: colors.purple.background,
+    background: "#f8f9fa",
   },
   "*": {
     padding: 0,
