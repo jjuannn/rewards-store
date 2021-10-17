@@ -30,4 +30,13 @@ export function redeemProduct(productId) {
     });
 }
 
-export function addCoins() {}
+export function addCoins(amount) {
+  return AXIOS.post("/user/points", { amount })
+    .then((response) => {
+      return response.data;
+    })
+    .catch((err) => {
+      console.error(err.message);
+      throw new Error("Failed while adding coins! Try again later :(");
+    });
+}
