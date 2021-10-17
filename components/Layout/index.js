@@ -1,4 +1,5 @@
 import { Box, Flex } from "@chakra-ui/react";
+import Footer from "components/Footer";
 import Nav from "components/Nav";
 
 export default function AppLayout({ children }) {
@@ -8,7 +9,7 @@ export default function AppLayout({ children }) {
       <Flex as="section" direction="column" flex="1">
         {children}
       </Flex>
-      <footer>footer</footer>
+      <Footer />
     </Box>
   );
 }
