@@ -3,8 +3,7 @@ import useUser from "hook/useUser";
 import { useState } from "react";
 
 export default function ProductCard({ category, name, cost, _id, img }) {
-  const { userData, userRedeemSuccess, userRedeemLoading, redeemPoints } =
-    useUser();
+  const { userData, userRedeemLoading, redeemPoints } = useUser();
 
   const handleClaim = () => {
     redeemPoints(_id, cost);
@@ -30,7 +29,7 @@ export default function ProductCard({ category, name, cost, _id, img }) {
               <Flex
                 width="fit-content"
                 padding="5px"
-                background={userRedeemLoading ? "#1E8397" : "#6ee8ff"}
+                background={userRedeemLoading ? "gray.100" : "#6ee8ff"}
                 borderRadius="full"
                 fontSize="12px"
                 alignItems="center"

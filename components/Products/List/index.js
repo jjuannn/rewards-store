@@ -3,10 +3,11 @@ import { Text, Box, Flex, Grid, Divider, useToast } from "@chakra-ui/react";
 import Filters from "../Filter";
 import ProductCard from "../Item";
 import useUser from "hook/useUser";
+import Link from "next/link";
 
 export default function ProductsList({ products }) {
   const [sortOrder, setSortOrder] = useState("recent");
-  const { userRedeemSuccess, userRedeemError } = useUser();
+  const { userRedeemSuccess, userRedeemError, clearUserRedeem } = useUser();
   const toast = useToast();
 
   const sortedProducts = () => {
@@ -25,7 +26,7 @@ export default function ProductsList({ products }) {
   useEffect(() => {
     if (userRedeemSuccess) {
       toast({
-        duration: 1500,
+        duration: 2000,
         isClosable: true,
         status: "success",
         title: "Product redeemed",
@@ -38,7 +39,7 @@ export default function ProductsList({ products }) {
   useEffect(() => {
     if (userRedeemError) {
       toast({
-        duration: 1500,
+        duration: 2000,
         isClosable: true,
         status: "error",
         title: "Something failed",
@@ -47,6 +48,12 @@ export default function ProductsList({ products }) {
       });
     }
   }, [userRedeemError]);
+
+  useEffect(() => {
+    return () => {
+      clearUserRedeem();
+    };
+  }, []);
 
   return (
     <>
@@ -59,7 +66,7 @@ export default function ProductsList({ products }) {
         </Flex>
         <Flex justifyContent={{ sm: "center", lg: "flex-start" }}>
           <Text as="span" color="#adb5bd" fontSize={{ sm: "4vw", md: "20px" }}>
-            Not enought points? Click here!
+            Not enought points? <Link href="/points">Click here!</Link>
           </Text>
         </Flex>
         <Divider marginTop="10px" />
