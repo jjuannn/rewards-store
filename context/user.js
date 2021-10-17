@@ -5,6 +5,7 @@ export const userContext = createContext({});
 const INITIAL_VALUES = {
   userValues: { data: null, loading: false, error: null },
   userRedeem: { loading: false, success: false, error: null },
+  userAddCoins: { loading: false, success: false, error: null },
 };
 
 export default function UserContextProvider({ children }) {
@@ -46,6 +47,15 @@ function userReducer(state, { type, payload }) {
           error: payload,
         },
       };
+    case "CLAIM_POINTS_DEFAULT":
+      return {
+        ...state,
+        userRedeem: {
+          loading: false,
+          error: null,
+          sucess: false,
+        },
+      };
     case "CLAIM_POINTS_LOADING":
       return {
         ...state,
@@ -71,6 +81,42 @@ function userReducer(state, { type, payload }) {
           loading: false,
           error: null,
           success: true,
+        },
+      };
+    case "ADD_POINTS_DEFAULT":
+      return {
+        ...state,
+        userAddCoins: {
+          loading: false,
+          success: false,
+          error: null,
+        },
+      };
+    case "ADD_POINTS_SUCCESS":
+      return {
+        ...state,
+        userAddCoins: {
+          loading: false,
+          success: true,
+          error: null,
+        },
+      };
+    case "ADD_POINTS_LOADING":
+      return {
+        ...state,
+        userAddCoins: {
+          loading: true,
+          success: false,
+          error: null,
+        },
+      };
+    case "ADD_POINTS_ERROR":
+      return {
+        ...state,
+        userAddCoins: {
+          loading: false,
+          success: false,
+          error: payload,
         },
       };
     default:
