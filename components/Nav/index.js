@@ -1,5 +1,6 @@
-import { Flex, Text, Image, Link } from "@chakra-ui/react";
+import { Flex, Text, Image } from "@chakra-ui/react";
 import useUser from "hook/useUser";
+import Link from "next/link";
 import { useEffect } from "react";
 
 export default function Nav() {
@@ -18,7 +19,7 @@ export default function Nav() {
       paddingX="1rem"
     >
       <Link href="/">
-        <Image width="50px" src="/assets/aerolab-logo.svg" />
+        <Image cursor="pointer" width="50px" src="/assets/aerolab-logo.svg" />
       </Link>
       <Flex alignItems="center" justifyContent="center">
         <Text
