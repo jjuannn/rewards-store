@@ -12,7 +12,7 @@ This application was made with:
 
 ## Deployments:
 
-- https://aerolab-challenge-v2.vercel.app/
+- https://rewards-store-beta.vercel.app/
 
 ## Instalation:
 
